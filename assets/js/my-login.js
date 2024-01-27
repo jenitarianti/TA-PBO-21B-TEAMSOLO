@@ -86,3 +86,18 @@ $(function() {
 		form.addClass('was-validated');
 	});
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+	// Menangkap kejadian keypress pada input
+	document.querySelectorAll('.login-form input').forEach(function(input) {
+		input.addEventListener("keypress", function(event) {
+			// Cek jika tombol yang ditekan adalah tombol Enter
+			if (event.key === "Enter") {
+				// Hentikan default action (mencegah form submit)
+				event.preventDefault();
+				// Cari tombol submit di dalam form dan klik secara otomatis
+				this.closest('form').querySelector('.login-btn').click();
+			}
+		});
+	});
+});
